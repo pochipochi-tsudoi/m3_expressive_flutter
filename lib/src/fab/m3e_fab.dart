@@ -47,7 +47,6 @@ class M3eFab {
 
 /* ---------------- 共通テーマ & コア実装（非公開） ---------------- */
 
-@immutable
 class M3eFabTheme extends ThemeExtension<M3eFabTheme> {
   final Size smallSize;
   final double smallRadius;

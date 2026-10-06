@@ -1,5 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:material_3p/material_shapes.dart';
 
+import 'm3e_shape.dart';
+
+/// Legacy circle widget — now delegates to [M3eShape] with [MaterialShapes.circle].
+///
+/// Kept for backward compatibility. Prefer [M3eShape] or [M3eShape.fromId] directly.
+///
+/// ```dart
+/// // Old
+/// Circle(size: 48, color: Colors.purple)
+///
+/// // New (equivalent)
+/// M3eShape(shape: MaterialShapes.circle, size: 48, color: Colors.purple)
+/// // or
+/// M3eShape.fromId(id: M3eShapeId.circle, size: 48)
+/// ```
 class Circle extends StatelessWidget {
   /// Diameter of the circle. Defaults to 42.
   final double size;
@@ -20,17 +36,14 @@ class Circle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: size,
-      height: size,
-      child: ClipOval(
-        child: image != null
-            ? Image(image: image!, fit: BoxFit.cover, width: size, height: size)
-            : DecoratedBox(
-                decoration: BoxDecoration(color: color),
-                child: const SizedBox.expand(),
-              ),
-      ),
+    // Delegate to M3eShape so all shapes share the same rendering path
+    // (RoundedPolygon via ClipPath). Visual result is identical to ClipOval
+    // but keeps parity with the M3 Expressive shape system.
+    return M3eShape(
+      shape: MaterialShapes.circle,
+      size: size,
+      color: color,
+      image: image,
     );
   }
 }

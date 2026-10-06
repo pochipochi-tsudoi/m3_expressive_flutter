@@ -1,4 +1,13 @@
 export 'src/shapes.dart';
+export 'src/shapes/expressive_shapes.dart';
+export 'src/shapes/shape_border.dart';
+export 'src/shapes/shape_clipper.dart';
+export 'src/shapes/m3e_shape.dart';
+export 'src/shapes/morph_widget.dart';
+export 'src/loading_indicator/loading_indicator_defaults.dart';
+export 'src/loading_indicator/m3e_loading_indicator.dart';
+export 'src/loading_indicator/m3e_contained_loading_indicator.dart';
+export 'src/loading_indicator/morph_painter.dart';
 export 'src/fab/m3e_fab.dart';
 export 'src/button/flex_icon_button.dart';
 export 'src/button/button_groups.dart';

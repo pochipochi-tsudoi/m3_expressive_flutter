@@ -124,6 +124,14 @@ class MyHomePage extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           _ConnectedSingleDemo(),
+          const SizedBox(height: 8),
+          const Divider(),
+          const SizedBox(height: 14),
+          Text('Shapes', style: Theme.of(context).textTheme.titleLarge),
+          const SizedBox(height: 4),
+          const SizedBox(height: 12),
+          const _ShapesGrid(),
+          _LoadingIndicator(),
           const SizedBox(height: 40),
         ],
       ),
@@ -232,6 +240,69 @@ class _ConnectedMultiDemoState extends State<_ConnectedMultiDemo> {
   }
 }
 
+class _ShapesGrid extends StatelessWidget {
+  const _ShapesGrid();
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    // 6×6 = 36 cells, 35 shapes + 1 empty
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 6,
+        mainAxisSpacing: 8,
+        crossAxisSpacing: 8,
+        childAspectRatio: 0.85,
+      ),
+      itemCount: 36,
+      itemBuilder: (context, index) {
+        if (index >= M3eShapes.all.length) {
+          // 36th cell — empty placeholder
+          return const SizedBox.shrink();
+        }
+        final id = M3eShapes.all[index];
+        return _ShapeCell(id: id, scheme: scheme);
+      },
+    );
+  }
+}
+
+class _ShapeCell extends StatelessWidget {
+  const _ShapeCell({required this.id, required this.scheme});
+
+  final M3eShapeId id;
+  final ColorScheme scheme;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Expanded(
+          child: M3eShape.fromId(
+            id: id,
+            size: 56,
+            color: scheme.primaryContainer,
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          id.name,
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+            fontSize: 9,
+            color: scheme.onSurfaceVariant,
+          ),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
+        ),
+      ],
+    );
+  }
+}
+
 class _ConnectedSingleDemo extends StatefulWidget {
   @override
   State<_ConnectedSingleDemo> createState() => _ConnectedSingleDemoState();
@@ -262,6 +333,21 @@ class _ConnectedSingleDemoState extends State<_ConnectedSingleDemo> {
               : '選択中: ${['Light', 'Auto', 'Dark'][_selected.first]}',
           style: Theme.of(context).textTheme.bodySmall,
         ),
+      ],
+    );
+  }
+}
+
+class _LoadingIndicator extends StatelessWidget {
+  const _LoadingIndicator();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        M3eShapes.LoadingIndicator(),
+        const SizedBox(width: 16),
+        M3eShapes.ContainedLoadingIndicator(),
       ],
     );
   }

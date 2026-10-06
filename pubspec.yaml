@@ -1,13 +1,14 @@
 name: m3_expressive_flutter
-description: "A new Flutter package project."
-version: 0.0.1
-homepage:
+description: "Material 3 Expressive for Flutter — 35 iconic shapes, morphing, FABs, button groups and more."
+version: 0.2.0
+homepage: https://github.com/anomalyco/m3_expressive_flutter
 
 environment:
   sdk: ">=3.7.0 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
+  androidx_graphics_shapes: ^1.7.0
   flutter:
     sdk: flutter
 

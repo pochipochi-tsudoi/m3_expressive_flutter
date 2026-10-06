@@ -22,7 +22,6 @@ enum ButtonGroupSelectionMode {
 }
 
 /// [ButtonGroup] の各ボタンの設定データ。
-@immutable
 class ButtonGroupItem {
   /// ボタンのラベルテキスト。
   final String? label;
@@ -52,7 +51,6 @@ class ButtonGroupItem {
 // ---------------------------------------------------------------------------
 
 /// [ButtonGroup] のテーマ設定。[ThemeExtension] として利用可能。
-@immutable
 class ButtonGroupTheme extends ThemeExtension<ButtonGroupTheme> {
   /// Standard バリアントのボタン間ギャップ（デフォルト 8dp）。
   final double standardGap;
