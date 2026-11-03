@@ -1,4 +1,4 @@
-import 'package:material_ui/material_ui.dart';
+import 'package:material_ui/material_ui.dart' hide MaterialShapes;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:m3_expressive_flutter/m3_expressive_flutter.dart';
 // ignore: unnecessary_import - explicit for MaterialShapes in tests

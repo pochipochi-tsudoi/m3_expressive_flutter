@@ -57,6 +57,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.8"
+  cupertino_ui:
+    dependency: transitive
+    description:
+      name: cupertino_ui
+      sha256: e003b87afde18cb396ec15928c7894063d64af04462c68df9a1404c461316dd2
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.5"
+  equatable:
+    dependency: transitive
+    description:
+      name: equatable
+      sha256: "3bce007a596ff8b3119c45d68aaef631272537c03d30e5d4534dd24bf4c5eaa2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   fake_async:
     dependency: transitive
     description:
@@ -142,7 +158,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.2.0"
   matcher:
     dependency: transitive
     description:
@@ -175,6 +191,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.2960.0"
+  material_ui:
+    dependency: "direct main"
+    description:
+      name: material_ui
+      sha256: feb289df1e5f9ed9522f9fe3d909432a7f7bc76943f16abad09f80a16cd25196
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.9.0"
   meta:
     dependency: transitive
     description:
@@ -183,6 +207,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.19.0"
+  motor:
+    dependency: transitive
+    description:
+      name: motor
+      sha256: cbd49f21b00e568c2b1a55f134ed803614a107782f4fea7769693bca32940c58
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   path:
     dependency: transitive
     description:

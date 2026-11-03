@@ -1,4 +1,4 @@
-import 'package:material_ui/material_ui.dart';
+import 'package:material_ui/material_ui.dart' hide MaterialShapes;
 import 'package:m3_expressive_flutter/m3_expressive_flutter.dart';
 
 void main() {
@@ -132,6 +132,9 @@ class MyHomePage extends StatelessWidget {
           const SizedBox(height: 12),
           const _ShapesGrid(),
           _LoadingIndicator(),
+          const Divider(),
+          const SizedBox(height: 14),
+          const _ExpressiveWidgetsDemo(),
           const SizedBox(height: 40),
         ],
       ),
@@ -348,6 +351,235 @@ class _LoadingIndicator extends StatelessWidget {
         M3eShapes.LoadingIndicator(),
         const SizedBox(width: 16),
         M3eShapes.ContainedLoadingIndicator(),
+      ],
+    );
+  }
+}
+
+class _ExpressiveWidgetsDemo extends StatefulWidget {
+  const _ExpressiveWidgetsDemo();
+
+  @override
+  State<_ExpressiveWidgetsDemo> createState() => _ExpressiveWidgetsDemoState();
+}
+
+class _ExpressiveWidgetsDemoState extends State<_ExpressiveWidgetsDemo> {
+  double _sliderValue = 0.5;
+  bool _toggleSelected = false;
+  bool _buttonBusy = false;
+  String _selectedCategory = 'all';
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // ── Wavy Indicators ──────────────────────────────────────────
+        Text(
+          'Wavy Indicators',
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+        const SizedBox(height: 12),
+        const WavyLinearProgressIndicator(value: 0.5),
+        const SizedBox(height: 12),
+        const WavyLinearProgressIndicator(),
+        const SizedBox(height: 16),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: const [
+            CircularWavyProgressIndicator(value: 0.75),
+            CircularWavyProgressIndicator(),
+          ],
+        ),
+        const SizedBox(height: 24),
+
+        // ── Wavy Slider ──────────────────────────────────────────────
+        Text(
+          'Wavy Slider',
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+        const SizedBox(height: 8),
+        ExpressiveWavySlider(
+          value: _sliderValue,
+          onChanged: (val) => setState(() => _sliderValue = val),
+        ),
+        const SizedBox(height: 24),
+
+        // ── Morph Button & Shape Toggle ──────────────────────────────
+        Text(
+          'Morph Button & Shape Toggle',
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+        const SizedBox(height: 12),
+        Row(
+          children: [
+            Expanded(
+              child: ExpressiveMorphButton(
+                busy: _buttonBusy,
+                onPressed: () {
+                  setState(() => _buttonBusy = true);
+                  Future.delayed(const Duration(seconds: 2), () {
+                    if (mounted) setState(() => _buttonBusy = false);
+                  });
+                },
+                child: const Text('Morph Button'),
+              ),
+            ),
+            const SizedBox(width: 16),
+            ExpressiveShapeToggle(
+              selected: _toggleSelected,
+              icon: Icons.star_border,
+              selectedIcon: Icons.star,
+              rotationTurnsOnSelect: 0.25,
+              onChanged: (val) => setState(() => _toggleSelected = val),
+            ),
+          ],
+        ),
+        const SizedBox(height: 24),
+
+        // ── Grouped Section ──────────────────────────────────────────
+        Text(
+          'Grouped Section',
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+        const SizedBox(height: 12),
+        ExpressiveGroupedSection(
+          children: [
+            ExpressiveGroupedTile(
+              leading: const Icon(Icons.music_note),
+              title: const Text('Sound Quality'),
+              subtitle: const Text('Lossless streaming enabled'),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () {},
+            ),
+            ExpressiveGroupedTile(
+              leading: const Icon(Icons.equalizer),
+              title: const Text('Equalizer'),
+              subtitle: const Text('Custom curve active'),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () {},
+            ),
+            ExpressiveGroupedTile(
+              leading: const Icon(Icons.spatial_audio),
+              title: const Text('Spatial Audio'),
+              subtitle: const Text('Dynamic head tracking'),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () {},
+            ),
+          ],
+        ),
+        const SizedBox(height: 24),
+
+        // ── Filter Chip Bar ──────────────────────────────────────────
+        Text(
+          'Filter Chip Bar',
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+        const SizedBox(height: 12),
+        ExpressiveFilterChipBar<String>(
+          selectedValue: _selectedCategory,
+          items: const [
+            ExpressiveFilterItem(
+              value: 'all',
+              label: 'All',
+              icon: Icons.apps,
+            ),
+            ExpressiveFilterItem(
+              value: 'audio',
+              label: 'Audio',
+              icon: Icons.headphones,
+            ),
+            ExpressiveFilterItem(
+              value: 'video',
+              label: 'Video',
+              icon: Icons.movie,
+            ),
+            ExpressiveFilterItem(
+              value: 'playlists',
+              label: 'Playlists',
+              icon: Icons.queue_music,
+            ),
+          ],
+          onSelected: (val) => setState(() => _selectedCategory = val),
+        ),
+        const SizedBox(height: 24),
+
+        // ── Badge & Expandable Text ──────────────────────────────────
+        Text(
+          'Badge & Expandable Text',
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+        const SizedBox(height: 12),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            MorphingShapeBadge(
+              fromShape: MaterialShapes.circle,
+              toShape: MaterialShapes.cookie7Sided,
+              size: 56.0,
+              child: const Icon(Icons.auto_awesome, color: Colors.purple),
+            ),
+            const SizedBox(width: 16),
+            const Expanded(
+              child: ExpressiveExpandableText(
+                text:
+                    'Material 3 Expressive introduces fluid, tactile UI patterns with physics-based spring motions. '
+                    'Polygons seamlessly morph into different shapes, progress indicators expressively wave and breathe, '
+                    'and sheets snap to place with spring dynamics for a lively mobile experience.',
+                collapsedMaxLines: 2,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 24),
+
+        // ── Sheets & Snacks ──────────────────────────────────────────
+        Text(
+          'Sheets & Snacks',
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+        const SizedBox(height: 12),
+        Wrap(
+          spacing: 12,
+          runSpacing: 12,
+          children: [
+            FilledButton.tonal(
+              onPressed: () {
+                showExpressiveConfirmSheet(
+                  context: context,
+                  title: 'Publish Track?',
+                  message: 'Your track will be accessible to public listeners.',
+                  confirmLabel: 'Publish',
+                );
+              },
+              child: const Text('Confirm Sheet'),
+            ),
+            FilledButton.tonal(
+              onPressed: () {
+                showExpressiveConfirmSheet(
+                  context: context,
+                  title: 'Delete Playlist?',
+                  message: 'This action is irreversible.',
+                  confirmLabel: 'Delete',
+                  isDestructive: true,
+                );
+              },
+              child: const Text('Destructive Sheet'),
+            ),
+            FilledButton(
+              onPressed: () {
+                showExpressiveSnack(
+                  context: context,
+                  message: 'Added to your favorites queue',
+                  icon: Icons.favorite,
+                  actionLabel: 'UNDO',
+                  onAction: () {},
+                );
+              },
+              child: const Text('Stack Snack'),
+            ),
+          ],
+        ),
       ],
     );
   }

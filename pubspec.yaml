@@ -14,10 +14,11 @@ dependencies:
 
   material_ui: any
   material_3p: any
+  motor: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0:
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
