@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart' hide MaterialShapes;
 import 'package:material_3p/material_shapes.dart';
 
 import 'm3e_shape.dart';

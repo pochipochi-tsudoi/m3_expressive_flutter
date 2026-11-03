@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Material 3 style Search App Bar:
 /// ┌ menu ── [   pill-shaped search field (centered text)   ] ── avatar ┐

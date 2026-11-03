@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:m3_expressive_flutter/m3_expressive_flutter.dart';
 
 void main() {

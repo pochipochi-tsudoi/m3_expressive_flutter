@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// A flexible-width icon + text filled button that sizes itself to its content width.
 /// API: [icon], [fillColor], [text]. Label text is white by default.

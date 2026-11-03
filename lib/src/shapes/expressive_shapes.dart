@@ -1,6 +1,7 @@
 library expressive_shapes;
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart'
+    hide MaterialShapes, RoundedPolygon;
 import 'package:material_3p/material_shapes.dart';
 
 // LoadingIndicator widgets — shapes/ -> loading_indicator/ is one-way, no cycle.

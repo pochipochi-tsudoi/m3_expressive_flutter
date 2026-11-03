@@ -1,6 +1,6 @@
 library m3e_fab;
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:m3_expressive_flutter/src/fab/components/large.dart';
 import 'package:m3_expressive_flutter/src/fab/components/menu.dart';
 import 'package:m3_expressive_flutter/src/fab/components/regular.dart';
